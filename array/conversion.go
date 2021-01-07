@@ -1,7 +1,7 @@
 package array
 
 import (
-	"go-array/elemen"
+	"github.com/a1049990866/go-array/elemen"
 )
 
 type Array struct {
