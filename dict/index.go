@@ -3,6 +3,7 @@ package dict
 import (
 	"errors"
 	"fmt"
+	"github.com/a1049990866/go-array/elemen"
 	"reflect"
 )
 
@@ -164,4 +165,8 @@ func (t *Dict) Get(key interface{}, args ...interface{}) interface{} {
 		return nil
 	}
 	return out.Interface()
+}
+
+func (t *Dict) GetElement(key interface{}, args ...interface{}) *elemen.Element {
+	return elemen.NewElement(t.Get(key, args...))
 }
