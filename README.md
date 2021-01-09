@@ -70,11 +70,13 @@ func main() {
 	fmt.Println(d.GetElement(3, "x", 0).ToString(), d.Error)
 }
 ```
-> map[2:map[3:map[4:map[5:1]]]] ---------- map[int]map[string]map[int]map[int]string
-> map[2:map[3:map[4:map[5:1]]] 3:map[5:3 4:map[5:[2]]]] ---------- map[int]interface {}
-> map[2:map[3:map[4:map[5:1]]] 3:map[4:map[5:[2]]]] ---------- map[int]interface {}
-> map[2:map[3:map[4:map[5:1]]] 3:map[5:3 4:map[5:[2]] x:[2.3]]] ---------- map[int]interface {}
-> map[2:map[3:map[4:map[5:1]]] 3:map[5:3 4:map[5:[2]] x:[2.3]] 3:map[xx:[2]]] ---------- map[interface {}]interface {}
-> map[2:map[3:map[4:map[5:1]]] 3:map[4:[3] 5:3 4:map[5:[2]] x:[2.3]] 3:map[xx:[2]]] ---------- map[interface {}]interface {}
-> 3 <nil>
-> 2.3 <nil>
+```
+map[2:map[3:map[4:map[5:1]]]] ---------- map[int]map[string]map[int]map[int]string
+map[2:map[3:map[4:map[5:1]]] 3:map[5:3 4:map[5:[2]]]] ---------- map[int]interface {}
+map[2:map[3:map[4:map[5:1]]] 3:map[4:map[5:[2]]]] ---------- map[int]interface {}
+map[2:map[3:map[4:map[5:1]]] 3:map[5:3 4:map[5:[2]] x:[2.3]]] ---------- map[int]interface {}
+map[2:map[3:map[4:map[5:1]]] 3:map[5:3 4:map[5:[2]] x:[2.3]] 3:map[xx:[2]]] ---------- map[interface {}]interface {}
+map[2:map[3:map[4:map[5:1]]] 3:map[4:[3] 5:3 4:map[5:[2]] x:[2.3]] 3:map[xx:[2]]] ---------- map[interface {}]interface {}
+3 <nil>
+2.3 <nil>
+```
