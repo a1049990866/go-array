@@ -114,16 +114,17 @@ func (t *Dict) set(out, val reflect.Value, isArray bool, key reflect.Value, args
 	case reflect.Map:
 		if len(args) == 0 {
 			res = t.setMap(out, key, val)
-		} else {
-			newOut := out
-			keyType := out.Type().Key()
-			b := reflect.TypeOf(make(map[interface{}]interface{}))
-			if keyType.Kind() != reflect.Interface && keyType != key.Type() {
-				newOut = reflect.MakeMap(reflect.MapOf(b.Key(), newOut.Type().Elem()))
-				out = t.a2b(out, newOut)
-			}
-			res = t.setMap(out, key, t.set(out.MapIndex(key), val, false, reflect.ValueOf(args[0]), args[1:]...))
+			return
 		}
+		newOut := out
+		keyType := out.Type().Key()
+		b := reflect.TypeOf(make(map[interface{}]interface{}))
+		if keyType.Kind() != reflect.Interface && keyType != key.Type() {
+			newOut = reflect.MakeMap(reflect.MapOf(b.Key(), newOut.Type().Elem()))
+			out = t.a2b(out, newOut)
+		}
+		next := out.MapIndex(key)
+		res = t.setMap(out, key, t.set(next, val, false, reflect.ValueOf(args[0]), args[1:]...))
 	case reflect.Invalid:
 		res = t.initMap(val, key, args...)
 	}

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/a1049990866/go-array/dict"
+	"reflect"
 )
 
 func main() {
@@ -20,4 +21,9 @@ func main() {
 	d.Set("3", true, 3, 4)
 	fmt.Println(d.Data, "----------", d.Value.Type())
 	fmt.Println(d.Get(3, 4, 0), d.Error)
+
+	a := make(map[int]map[int]int)
+	b := reflect.ValueOf(a)
+	fmt.Println(a[2])
+	fmt.Println(b.MapIndex(reflect.ValueOf(1)).Kind(), "===========")
 }
